@@ -91,7 +91,7 @@ def train(rank, world_size, simclr_model, criterion, optimizer,scheduler, epochs
 
 if __name__ == "__main__":
     world_size = torch.cuda.device_count()  # Number of GPUs available
-    world_size = 7
+    #world_size = 7
     simclr_model = SimCLR(ResNet50())
     criterion = info_nce_loss(temperature=0.5)
 

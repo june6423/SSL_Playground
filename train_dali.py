@@ -47,8 +47,8 @@ def train(rank, world_size, simclr_model, criterion, optimizer, epochs=5001, bat
         total_loss = 0.0
         
         for batch_idx, (image1,image2, _) in enumerate(dali_iterator):
-            image1 = torch.as_tensor(image1.as_tensor(), device=f'cuda:{rank}')
-            image2 = torch.as_tensor(image2.as_tensor(), device=f'cuda:{rank}')
+            image1 = torch.as_tensor(image1.as_tensor())
+            image2 = torch.as_tensor(image2.as_tensor())
             # Forward pass
             h_i, h_j, z_i, z_j = simclr_model(image1, image2)
 

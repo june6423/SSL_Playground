@@ -117,7 +117,6 @@ class SimCLR(nn.Module):
     def get_embedding(self, x):
         h = self.base_encoder(x)
         h = h.view(h.size(0), -1)
-
         return h
     
 class regression(nn.Module):

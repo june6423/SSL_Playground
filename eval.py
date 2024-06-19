@@ -46,14 +46,15 @@ def eval(simclr_model, fc_model):
             optimizer.step()
 
         correct = 0
-        for batch_idx, (images, label) in enumerate(test_loader):
-            images = torch.as_tensor(images, device=device)
-            label = label.to(device=device)
-            h = simclr_model.get_embedding(images)
-            y = fc_model(h)
+        with torch.no_grad():
+            for batch_idx, (images, label) in enumerate(test_loader):
+                images = torch.as_tensor(images, device=device)
+                label = label.to(device=device)
+                h = simclr_model.get_embedding(images)
+                y = fc_model(h)
 
-            _, predicted = torch.max(y, 1)
-            correct += (predicted == label).sum().item()
+                _, predicted = torch.max(y, 1)
+                correct += (predicted == label).sum().item()
 
         print(f"Epoch {epoch} Loss: {total_loss} Accuracy: {correct / len(test_dataset)}")
 
