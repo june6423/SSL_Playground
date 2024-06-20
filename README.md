@@ -25,5 +25,5 @@ This project focuses on practicing **Self-Supervised Learning (SSL)** using the 
 
 ## Visualizations
 
-<img src = "./tsne_more_aug.png" title="t-SNE visualization">
-<img src = "./umap_more_aug.png" title="UMAP visualization">
+<img src = "./image/tsne_more_aug.png" title="t-SNE visualization">
+<img src = "./image/umap_more_aug.png" title="UMAP visualization">

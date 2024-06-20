@@ -107,3 +107,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Needs Improvement!
+    # Current Elapsed time per epoch
+    # DALI : 77s
+    # Naive Pytorch : 27s

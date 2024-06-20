@@ -1,4 +1,4 @@
-name: openmmlab
+name: ssl_playground
 channels:
   - defaults
 dependencies:
@@ -102,4 +102,4 @@ dependencies:
       - werkzeug==3.0.3
       - yapf==0.40.2
       - zipp==3.19.2
-prefix: /opt/conda/envs/openmmlab
+prefix: /opt/conda/envs/ssl_playground
