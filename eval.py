@@ -61,6 +61,6 @@ def eval(simclr_model, fc_model):
 
 if __name__ == "__main__":
     simclr_model = SimCLR(ResNet50())
-    simclr_model = load_checkpoint(simclr_model, "./checkpoint_2000.pth")
+    simclr_model = load_checkpoint(simclr_model, "./checkpoint_more_aug_2000.pth")
     fc_model = regression(2048, 10)
     eval(simclr_model, fc_model)

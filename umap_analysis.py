@@ -42,16 +42,27 @@ def get_data(simclr_model):
 
 if __name__ == "__main__":
     simclr_model = SimCLR(ResNet50())
-    simclr_model = load_checkpoint(simclr_model, "./checkpoint_2000.pth")
+    simclr_model = load_checkpoint(simclr_model, "./checkpoint_more_aug_2000.pth")
     data, labels = get_data(simclr_model)
     n_components = 2
 
-    reducer = umap.UMAP(n_components=n_components, min_dist=0.0125)
+    reducer = umap.UMAP(n_components=n_components)
     transformed_data = reducer.fit_transform(data)
 
     # Create a scatter plot
     plt.scatter(transformed_data[:, 0], transformed_data[:, 1], c=labels, alpha=0.5,cmap='viridis', s=10)
-    plt.colorbar()
+    #cbar = plt.colorbar()
 
-    plt.savefig('umap_0.0125.png')
+    plt.title('UMAP projection over CIFAR10', fontsize=15)
+
+    class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+    for i, class_name in enumerate(class_names):
+        # Normalize the label value to the range [0, 1]
+        normalized_value = i / (len(class_names) - 1)
+        # Get the color corresponding to the normalized value
+        color = plt.cm.viridis(normalized_value)
+        plt.scatter([], [], color=color, label=class_name)
+    plt.legend()
+
+    plt.savefig('umap_more_aug.png')
     plt.show()
